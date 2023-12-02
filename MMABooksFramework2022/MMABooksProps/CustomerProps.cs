@@ -13,9 +13,19 @@ namespace MMABooksProps
     public class CustomerProps : IBaseProps
     {
         #region Auto-implemented Properties
-        public string Code { get; set; } = "";
+
+        //properties for customer
+        public int CustomerID { get; set; } = 0;
 
         public string Name { get; set; } = "";
+
+        public string Address { get; set; } = "";
+
+        public string City { get; set; } = "";
+
+        public string State { get; set; } = "";
+
+        public string ZipCode { get; set; } = "";
 
         /// <summary>
         /// ConcurrencyID. Don't manipulate directly.
@@ -26,8 +36,12 @@ namespace MMABooksProps
         public object Clone()
         {
             CustomerProps p = new CustomerProps();
-            p.Code = this.Code;
+            p.CustomerID = this.CustomerID;
             p.Name = this.Name;
+            p.Address = this.Address;
+            p.City = this.City;
+            p.State = this.State;
+            p.ZipCode = this.ZipCode;
             p.ConcurrencyID = this.ConcurrencyID;
             return p;
         }
@@ -42,15 +56,23 @@ namespace MMABooksProps
         public void SetState(string jsonString)
         {
             CustomerProps p = JsonSerializer.Deserialize<CustomerProps>(jsonString);
-            this.Code = p.Code;
+            this.CustomerID = p.CustomerID;
             this.Name = p.Name;
+            this.Address = p.Address;
+            this.City = p.City;
+            this.State = p.State;
+            this.ZipCode = p.ZipCode;
             this.ConcurrencyID = p.ConcurrencyID;
         }
 
         public void SetState(DBDataReader dr)
         {
-            this.Code = ((string)dr["StateCode"]).Trim();
-            this.Name = (string)dr["StateName"];
+            this.CustomerID = (int)dr["CustomerID"];
+            this.Name = (string)dr["Name"];
+            this.Address = (string)dr["Address"];
+            this.City = (string)dr["City"];
+            this.State = (string)dr["State"];
+            this.ZipCode = (string)dr["ZipCode"];
             this.ConcurrencyID = (Int32)dr["ConcurrencyID"];
         }
     }
