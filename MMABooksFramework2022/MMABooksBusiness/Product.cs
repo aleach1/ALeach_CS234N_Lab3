@@ -172,5 +172,32 @@ namespace MMABooksBusiness
             mdbReadable = new ProductDB();
             mdbWriteable = new ProductDB();
         }
+
+        #region constructors
+        /// <summary>
+        /// Default constructor - gets the connection string - assumes a new record that is not in the database.
+        /// </summary>
+        public Product() : base()
+        {
+        }
+
+        /// <summary>
+        /// Calls methods SetUp() and Load().
+        /// Use this constructor when the object is in the database AND the connection string is in a config file
+        /// </summary>
+        /// <param name="key">ID number of a record in the database.
+        /// Sent as an arg to Load() to set values of record to properties of an 
+        /// object.</param>
+        public Product(int key)
+            : base(key)
+        {
+        }
+
+        private Product(ProductProps props)
+            : base(props)
+        {
+        }
+
+        #endregion
     }
 }
