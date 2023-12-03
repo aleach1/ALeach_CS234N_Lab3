@@ -19,7 +19,7 @@ namespace MMABooksBusiness
             
             set
             {
-                if (!(value == ((Customer)mProps).CustomerID))
+                if (!(value == ((CustomerProps)mProps).CustomerID))
                 {
                     mRules.RuleBroken("CustomerID", false);
                     ((CustomerProps)mProps).CustomerID = value;
@@ -170,7 +170,6 @@ namespace MMABooksBusiness
 
         protected override void SetDefaultProperties()
         {
-            throw new NotImplementedException();
         }
 
         protected override void SetRequiredRules()
